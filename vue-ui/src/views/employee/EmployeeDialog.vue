@@ -1,9 +1,9 @@
 <template>
   <div class="dialog" :class="{ hide: !isShow }">
-    <div class="dialog-background" @click="closeDialog"></div>
+    <div class="dialog-background" @click.prevent="closeDialog"></div>
     <div class="dialog-content">
       <div class="tooltip-box">
-        <div class="btn-close-dialog" @click="closeDialog">
+        <div class="btn-close-dialog" @click.prevent="closeDialog">
           <div class="icon icon-close"></div>
         </div>
       </div>
@@ -180,7 +180,7 @@
 
       <div class="dialog-footer">
         <div class="dialog-footer-left">
-          <button class="btn btn-secondary" @click="closeDialog">Hủy</button>
+          <button class="btn btn-secondary" @click.prevent="closeDialog">Hủy</button>
         </div>
         <div class="dialog-footer-right">
           <button class="btn btn-secondary">Cất</button>

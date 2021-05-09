@@ -59,21 +59,7 @@
               <td>Techcombank</td>
               <td>Hà nội</td>
               <td>
-                <div class="table-option">
-                  <button class="btn" @click="onClickBtnEditEmployee">
-                    Sửa
-                  </button>
-                  <div class="dropdown">
-                    <div class="dropdown-btn">
-                      <button class="btn icon icon-chevron-down-blue"></button>
-                    </div>
-                    <div class="dropdown-content right hide">
-                      <div class="dropdown-item">Nhân bản</div>
-                      <div class="dropdown-item">Xóa</div>
-                      <div class="dropdown-item">Ngưng sử dụng</div>
-                    </div>
-                  </div>
-                </div>
+                <EmployeeDropdown />
               </td>
             </tr>
           </tbody>
@@ -114,10 +100,12 @@
 </template>
 
 <script>
+import EmployeeDropdown from "./EmployeeDropdown.vue";
 import EmployeeDialog from "./EmployeeDialog.vue";
 import AlertDialog from "./AlertDialog.vue";
 export default {
   components: {
+    EmployeeDropdown,
     EmployeeDialog,
     AlertDialog,
   },

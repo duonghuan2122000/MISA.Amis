@@ -12,7 +12,9 @@
       </div>
       <div class="dialog-footer">
         <div class="dialog-footer-left">
-          <button class="btn btn-secondary" @click="closeDialog">Không</button>
+          <button class="btn btn-secondary" @click.prevent="closeDialog">
+            Không
+          </button>
         </div>
         <div class="dialog-footer-right">
           <button class="btn btn-primary">Có</button>
