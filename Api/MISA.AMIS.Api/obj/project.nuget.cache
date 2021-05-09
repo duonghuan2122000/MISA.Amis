@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "FNpWPEtnTPOpktA3wBkjsnh6PORw3t+jlkRTy1he4eaA3T5kWQLf06fh3X5CWOfJhXFkd1VoRkkE8PseAqzjbA==",
+  "success": true,
+  "projectFilePath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.AMIS.Api\\MISA.AMIS.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\duong\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\duong\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\duong\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\duong\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\duong\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\duong\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
