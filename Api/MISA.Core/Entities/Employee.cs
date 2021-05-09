@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MISA.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -33,12 +34,17 @@ namespace MISA.Core.Entities
         /// <summary>
         /// Giới tính: 0 - Nam, 1 - Nữ, 2 - Khác
         /// </summary>
-        public int? Gender { get; set; }
+        public GenderEnum? Gender { get; set; }
 
         /// <summary>
         /// Id của đơn vị nhân viên.
         /// </summary>
         public Guid EmployeeDepartmentId { get; set; }
+
+        /// <summary>
+        /// Tên đơn vị nhân viên
+        /// </summary>
+        public string EmployeeDepartmentName { get; set; }
 
         /// <summary>
         /// Số CMND/ CCCD
@@ -99,5 +105,22 @@ namespace MISA.Core.Entities
         /// Ngày sửa
         /// </summary>
         public DateTime? ModifiedDate { get; set; }
+
+        /// <summary>
+        /// Giới tính
+        /// </summary>
+        public string GenderName
+        {
+            get
+            {
+                return Gender switch
+                {
+                    GenderEnum.MALE => "Nam",
+                    GenderEnum.FEMALE => "Nữ",
+                    GenderEnum.OTHER => "Khác",
+                    _ => "Không xác định"
+                };
+            }
+        }
     }
 }

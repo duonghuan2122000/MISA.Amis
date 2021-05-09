@@ -1,4 +1,5 @@
 ﻿using MISA.Core.Entities;
+using MISA.Core.Exceptions;
 using MISA.Core.Interfaces.Repositories;
 using MISA.Core.Interfaces.Services;
 using System;
@@ -35,7 +36,10 @@ namespace MISA.Core.Services
         /// CreatedBy: dbhuan (09/05/2021)
         public Paging<Employee> GetEmployees(EmployeeFilter employeeFilter)
         {
-            
+            if(employeeFilter.Page <= 0 || employeeFilter.PageSize <= 0)
+            {
+                throw new ClientException("Tham số truyền vào không hợp lệ");
+            }
             return _employeeRepository.GetEmployees(employeeFilter);
         }
 
