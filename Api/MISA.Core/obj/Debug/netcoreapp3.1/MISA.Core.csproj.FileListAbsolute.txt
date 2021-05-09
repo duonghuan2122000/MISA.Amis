@@ -1,0 +1,9 @@
+E:\Fresher MISA\MISA.Amis\Api\MISA.Core\bin\Debug\netcoreapp3.1\MISA.Core.deps.json
+E:\Fresher MISA\MISA.Amis\Api\MISA.Core\bin\Debug\netcoreapp3.1\MISA.Core.dll
+E:\Fresher MISA\MISA.Amis\Api\MISA.Core\bin\Debug\netcoreapp3.1\MISA.Core.pdb
+E:\Fresher MISA\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.csprojAssemblyReference.cache
+E:\Fresher MISA\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.AssemblyInfoInputs.cache
+E:\Fresher MISA\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.AssemblyInfo.cs
+E:\Fresher MISA\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.csproj.CoreCompileInputs.cache
+E:\Fresher MISA\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.dll
+E:\Fresher MISA\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.pdb

@@ -1,0 +1,103 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace MISA.Core.Entities
+{
+    /// <summary>
+    /// Thông tin nhân viên.
+    /// </summary>
+    /// CreatedBy: dbhuan (09/05/2021)
+    public class Employee
+    {
+        /// <summary>
+        /// Id nhân viên
+        /// </summary>
+        public Guid EmployeeId { get; set; }
+
+        /// <summary>
+        /// Mã nhân viên
+        /// </summary>
+        public string EmployeeCode { get; set; }
+
+        /// <summary>
+        /// Tên nhân viên
+        /// </summary>
+        public string EmployeeName { get; set; }
+
+        /// <summary>
+        /// Ngày sinh
+        /// </summary>
+        public DateTime? DateOfBirth { get; set; }
+
+        /// <summary>
+        /// Giới tính: 0 - Nam, 1 - Nữ, 2 - Khác
+        /// </summary>
+        public int? Gender { get; set; }
+
+        /// <summary>
+        /// Id của đơn vị nhân viên.
+        /// </summary>
+        public Guid EmployeeDepartmentId { get; set; }
+
+        /// <summary>
+        /// Số CMND/ CCCD
+        /// </summary>
+        public string IdentityNumber { get; set; }
+
+        /// <summary>
+        /// Ngày cấp CMND/ CCCD
+        /// </summary>
+        public DateTime? IdentityDate { get; set; }
+
+        /// <summary>
+        /// Nơi cấp CMND/ CCCD
+        /// </summary>
+        public string IdentityPlace { get; set; }
+
+        /// <summary>
+        /// Chức danh nhân viên
+        /// </summary>
+        public string EmployeePosition { get; set; }
+
+        /// <summary>
+        /// Địa chỉ nhân viên
+        /// </summary>
+        public string EmployeeAddress { get; set; }
+
+        /// <summary>
+        /// Số điện thoại di động
+        /// </summary>
+        public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Số điện thoại cố định
+        /// </summary>
+        public string TeleNumber { get; set; }
+
+        /// <summary>
+        /// Email của nhân viên
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Người tạo
+        /// </summary>
+        public string CreatedBy { get; set; }
+
+        /// <summary>
+        /// Ngày tạo
+        /// </summary>
+        public DateTime? CreatedDate { get; set; }
+
+        /// <summary>
+        /// Người sửa
+        /// </summary>
+        public string ModifiedBy { get; set; }
+
+        /// <summary>
+        /// Ngày sửa
+        /// </summary>
+        public DateTime? ModifiedDate { get; set; }
+    }
+}
