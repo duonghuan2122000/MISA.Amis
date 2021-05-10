@@ -1,42 +1,48 @@
 <template>
   <div>
-    <div class="content" v-if="isLoading">
-      <div class="loading">
+    <div class="content">
+      <div class="flex-center" v-show="isLoading">
         <div class="loader"></div>
       </div>
-    </div>
 
-    <div class="content" v-else-if="isSuccess">
-      <div class="title-box">
-        <div class="title">Nhân viên</div>
-        <div class="toolbar">
-          <button class="btn btn-primary" @click="setStateEmployeeDialog(true)">
-            Thêm mới nhân viên
-          </button>
-        </div>
+      <div class="flex-center" v-if="isError">
+        <div class="icon icon-error"></div>
+        <div>Có lỗi xảy ra.</div>
       </div>
 
-      <div class="toolbar-box">
-        <div class="con-input">
-          <input
-            class="input has-icon"
-            type="text"
-            placeholder="Tìm theo mã, tên nhân viên"
-            style="border-radius: 0"
-            :value="filter"
-            @input="onChangeInputEmployeeFilter"
-          />
-          <div
-            class="icon-input icon icon-search"
-            @click="onBtnClickRefresh"
-          ></div>
+      <div
+        v-if="!isError && employees && employees.length > 0"
+        style="width: 100%; height: 100%; display: flex; flex-direction: column"
+      >
+        <div class="title-box">
+          <div class="title">Nhân viên</div>
+          <div class="toolbar">
+            <button class="btn btn-primary" @click="showEmployeeDialog">
+              Thêm mới nhân viên
+            </button>
+          </div>
         </div>
-        <div class="icon icon-refresh" style="margin-left: 8px"></div>
-        <div class="icon icon-excel" style="margin-left: 8px"></div>
-      </div>
 
-      <div class="data">
-        <div class="scroll">
+        <div class="toolbar-box">
+          <div class="con-input">
+            <input
+              class="input has-icon"
+              type="text"
+              placeholder="Tìm theo mã, tên nhân viên"
+              style="border-radius: 0"
+              :value="filter"
+              @input="onChangeInputEmployeeFilter"
+            />
+            <div
+              class="icon-input icon icon-search"
+              @click="onBtnClickRefresh"
+            ></div>
+          </div>
+          <div class="icon icon-refresh" style="margin-left: 8px"></div>
+          <div class="icon icon-excel" style="margin-left: 8px"></div>
+        </div>
+
+        <div class="data">
           <table class="table">
             <thead>
               <tr>
@@ -77,6 +83,7 @@
                 <td>
                   <EmployeeDropdown
                     @onClickBtnEdit="onClickBtnEditEmployee(e.employeeId)"
+                    @onClickBtnDel="onClickBtnDelEmployee(e)"
                   />
                 </td>
               </tr>
@@ -98,11 +105,14 @@
       :isShow="isShowEmployeeDialog"
       :employee.sync="employeeModify"
       @onClose="setStateEmployeeDialog(false)"
+      @onPositive="saveEmployee"
     />
 
     <AlertDialog
       :isShow="isShowAlertDialog"
-      @onClose="setStateEmployeeDialog(false)"
+      :employeeCode="employeeDel && employeeDel.employeeCode"
+      @onPositive="delEmployee"
+      @onClose="setStateAlertDialog(false)"
     />
   </div>
 </template>
@@ -170,6 +180,12 @@ export default {
     employeeModify: null,
 
     /**
+     * Thông tin nhân viên cần xóa.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    employeeDel: null,
+
+    /**
      * Biến xác định trạng thái employee dialog.
      * CreatedBy: dbhuan (09/05/2021)
      */
@@ -188,8 +204,8 @@ export default {
     isLoading: function () {
       return this.state == StateEnum.LOADING;
     },
-    isSuccess: function () {
-      return this.state == StateEnum.SUCCESS;
+    isError: function () {
+      return this.state == StateEnum.ERROR;
     },
   },
 
@@ -210,15 +226,19 @@ export default {
      */
     fetchEmployees() {
       this.state = StateEnum.LOADING;
-      req(
-        `api/v1/employees?page=${this.page}&pageSize=${this.pageSize}&filter=${this.filter}`
-      )
+      req
+        .get(
+          `api/v1/employees?page=${this.page}&pageSize=${this.pageSize}&filter=${this.filter}`
+        )
         .then((res) => res.data)
         .then((data) => {
           this.employees = data.data;
           this.totalPages = data.totalPages;
           this.totalRecord = data.totalRecord;
           this.state = StateEnum.SUCCESS;
+        })
+        .catch(() => {
+          this.state = StateEnum.ERROR;
         });
     },
 
@@ -242,7 +262,50 @@ export default {
      */
     onBtnClickRefresh() {
       this.filter = "";
-      this.$router.push({ query: { ...this.$route.query, page: 1 } });
+      this.$router.push({
+        name: "employee",
+        query: { ...this.$route.query, page: 1 },
+      });
+    },
+
+    /**
+     * Lưu thông tin nhân viên.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    saveEmployee() {
+      this.state = StateEnum.LOADING;
+      var reqConfig = {
+        url: "api/v1/employees",
+        method: "POST",
+        data: this.employeeModify,
+      };
+      if (this.employeeModify.employeeId) {
+        // update
+        reqConfig.method = "PUT";
+      }
+
+      req(reqConfig).then((res) => {
+        if (res.status != 204) {
+          this.setStateEmployeeDialog(false);
+          this.fetchEmployees();
+        }
+      });
+    },
+
+    /**
+     * Phương thức xóa nhân viên.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    delEmployee() {
+      this.state = StateEnum.LOADING;
+      this.setStateAlertDialog(false);
+      req
+        .delete(`api/v1/employees/${this.employeeDel.employeeId}`)
+        .then((res) => {
+          if (res.status == 200) {
+            this.fetchEmployees();
+          }
+        });
     },
 
     /**
@@ -254,17 +317,39 @@ export default {
       this.isShowEmployeeDialog = state;
     },
 
+    showEmployeeDialog() {
+      this.employeeModify = null;
+      req("api/v1/employees/NewEmployeeCode")
+        .then((res) => res.data)
+        .then((data) => {
+          this.employeeModify = {
+            employeeCode: data,
+          };
+          this.setStateEmployeeDialog(true);
+        });
+    },
+
     /**
      * Phương thức click button sửa nhân viên.
      * CreatedBy: dbhuan (09/05/2021)
      */
     onClickBtnEditEmployee(employeeId) {
+      this.employeeModify = null;
       this.setStateEmployeeDialog(true);
       req(`api/v1/employees/${employeeId}`)
         .then((res) => res.data)
         .then((data) => {
           this.employeeModify = data;
         });
+    },
+
+    /**
+     * Phương thức click button xóa nhân viên.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    onClickBtnDelEmployee(employee) {
+      this.employeeDel = employee;
+      this.setStateAlertDialog(true);
     },
 
     /**

@@ -92,6 +92,21 @@ namespace MISA.Core.Entities
         public string Email { get; set; }
 
         /// <summary>
+        /// Số tài khoản ngân hàng
+        /// </summary>
+        public string BankAccountNumber { get; set; }
+
+        /// <summary>
+        /// Tên ngân hàng
+        /// </summary>
+        public string BankName { get; set; }
+
+        /// <summary>
+        /// Tên chi nhánh ngân hàng
+        /// </summary>
+        public string BankBranchName { get; set; }
+
+        /// <summary>
         /// Người tạo
         /// </summary>
         public string CreatedBy { get; set; }

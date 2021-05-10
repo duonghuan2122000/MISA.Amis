@@ -126,7 +126,7 @@ namespace MISA.AMIS.Api.Controllers
         /// 500 - Lỗi server
         /// </returns>
         /// CreatedBy: dbhuan (09/05/2021)
-        [HttpDelete]
+        [HttpDelete("{employeeId}")]
         public IActionResult DeleteEmployee(Guid employeeId)
         {
             var res = _employeeService.Delete(employeeId);

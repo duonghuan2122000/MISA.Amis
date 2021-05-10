@@ -6,7 +6,8 @@
         <div class="flex-row-align-center" style="padding-top: 32px">
           <div class="icon icon-warning-48"></div>
           <div style="margin-left: 16px">
-            Bạn có thực sự muốn xóa nhân viên &lt;123&gt; không ?
+            Bạn có thực sự muốn xóa nhân viên &lt;{{ employeeCode || "" }}&gt;
+            không ?
           </div>
         </div>
       </div>
@@ -17,7 +18,9 @@
           </button>
         </div>
         <div class="dialog-footer-right">
-          <button class="btn btn-primary">Có</button>
+          <button class="btn btn-primary" @click.prevent="$emit('onPositive')">
+            Có
+          </button>
         </div>
       </div>
     </div>
@@ -34,6 +37,15 @@ export default {
     isShow: {
       type: Boolean,
       default: false,
+    },
+
+    /**
+     * Prop mã nhân viên.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    employeeCode: {
+      type: String,
+      default: null,
     },
   },
 

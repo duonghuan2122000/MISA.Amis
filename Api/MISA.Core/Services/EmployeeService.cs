@@ -118,7 +118,7 @@ namespace MISA.Core.Services
                 {
                     var propertyValue = property.GetValue(employee);
 
-                    if(propertyValue == null || string.IsNullOrEmpty((string)propertyValue))
+                    if(propertyValue == null || string.IsNullOrEmpty(property.ToString()))
                     {
                         var requiredProperty = requiredProperties[0] as PropertyRequired;
 

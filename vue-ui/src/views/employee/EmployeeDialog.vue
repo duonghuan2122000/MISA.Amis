@@ -89,7 +89,7 @@
                     class="input"
                     :value="
                       employee && employee.dateOfBirth
-                        ? formatDateMMDDYYYY(employee.dateOfBirth)
+                        ? formatYYYMMDD(employee.dateOfBirth)
                         : null
                     "
                     @input="
@@ -227,7 +227,7 @@
                     class="input"
                     :value="
                       employee && employee.identityDate
-                        ? formatDateMMDDYYYY(employee.identityDate)
+                        ? formatYYYMMDD(employee.identityDate)
                         : null
                     "
                     @input="
@@ -346,19 +346,49 @@
           <div class="col-3" style="padding-right: 8px">
             <div>
               <label class="label-input">Tài khoản ngân hàng</label>
-              <input type="text" class="input" />
+              <input
+                type="text"
+                class="input"
+                :value="employee && employee.bankAccountNumber"
+                @input="
+                  $emit('update:employee', {
+                    ...employee,
+                    bankAccountNumber: $event.target.value,
+                  })
+                "
+              />
             </div>
           </div>
           <div class="col-3" style="padding-right: 8px">
             <div>
               <label class="label-input">Tên ngân hàng</label>
-              <input type="text" class="input" />
+              <input
+                type="text"
+                class="input"
+                :value="employee && employee.bankName"
+                @input="
+                  $emit('update:employee', {
+                    ...employee,
+                    bankName: $event.target.value,
+                  })
+                "
+              />
             </div>
           </div>
           <div class="col-3" style="padding-right: 8px">
             <div>
               <label class="label-input">Chi nhánh</label>
-              <input type="text" class="input" />
+              <input
+                type="text"
+                class="input"
+                :value="employee && employee.bankBranchName"
+                @input="
+                  $emit('update:employee', {
+                    ...employee,
+                    bankBranchName: $event.target.value,
+                  })
+                "
+              />
             </div>
           </div>
           <div class="col-3" style="padding-right: 8px"></div>
@@ -372,7 +402,9 @@
           </button>
         </div>
         <div class="dialog-footer-right">
-          <button class="btn btn-secondary">Cất</button>
+          <button class="btn btn-secondary" @click.prevent="onClickSave">
+            Cất
+          </button>
           <button class="btn btn-primary" style="margin-left: 8px">
             Cất và thêm
           </button>
@@ -411,6 +443,20 @@ export default {
 
   methods: {
     /**
+     * Phương thức click lưu thông tin nhân viên.
+     */
+    onClickSave() {
+      if (this.errors) {
+        for (let err in this.errors) {
+          if (this.errors[err]) {
+            return;
+          }
+        }
+      }
+      this.$emit("onPositive");
+    },
+
+    /**
      * Phương thức đóng dialog
      * CreatedBy: dbhuan (10/05/2021)
      */
@@ -419,11 +465,11 @@ export default {
     },
 
     /**
-     * Hàm format date về dạng MM/DD/YYYY
+     * Hàm format date về dạng YYYY-MM-DD
      * CreatedBy: dbhuan (10/05/2021)
      */
-    formatDateMMDDYYYY(dateStr) {
-      return dateStr ? dayjs(dateStr).format("MM/DD/YYYY") : null;
+    formatYYYMMDD(dateStr) {
+      return dateStr ? dayjs(dateStr).format("YYYY-MM-DD") : null;
     },
 
     /**
@@ -435,6 +481,11 @@ export default {
         this.errors = {
           ...this.errors,
           employeeCode: "Mã nhân viên không được để trống.",
+        };
+      } else {
+        this.errors = {
+          ...this.errors,
+          employeeCode: null,
         };
       }
     },
@@ -449,6 +500,11 @@ export default {
           ...this.errors,
           employeeName: "Tên nhân viên không được để trống.",
         };
+      } else {
+        this.errors = {
+          ...this.errors,
+          employeeName: null,
+        };
       }
     },
 
@@ -461,6 +517,11 @@ export default {
         this.errors = {
           ...this.errors,
           employeeDepartmentId: "Đơn vị nhân viên không được để trống.",
+        };
+      } else {
+        this.errors = {
+          ...this.errors,
+          employeeDepartmentId: null,
         };
       }
     },

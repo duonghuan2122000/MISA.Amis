@@ -7,7 +7,7 @@
       </div>
       <div class="dropdown-content right" :class="{ hide: !isShow }">
         <div class="dropdown-item">Nhân bản</div>
-        <div class="dropdown-item">Xóa</div>
+        <div class="dropdown-item" @click.prevent="onClickBtnDel">Xóa</div>
         <div class="dropdown-item">Ngưng sử dụng</div>
       </div>
     </div>
@@ -49,6 +49,15 @@ export default {
      */
     onClickBtnEdit() {
       this.$emit("onClickBtnEdit");
+    },
+
+    /**
+     * Click button xóa.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    onClickBtnDel() {
+      this.toggleDropdown();
+      this.$emit("onClickBtnDel");
     },
   },
 
