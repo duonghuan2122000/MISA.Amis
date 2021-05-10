@@ -230,19 +230,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\duong\\.nuget\\packages\\": {}
+    "C:\\Users\\dbhuan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
       "projectName": "MISA.Infrastructure",
-      "projectPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\duong\\.nuget\\packages\\",
-      "outputPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\dbhuan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\duong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dbhuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -256,8 +256,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj": {
-              "projectPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj"
+            "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj": {
+              "projectPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj"
             }
           }
         }
@@ -300,7 +300,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

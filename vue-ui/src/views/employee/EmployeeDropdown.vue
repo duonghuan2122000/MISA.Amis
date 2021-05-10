@@ -1,6 +1,6 @@
 <template>
   <div class="table-option">
-    <button class="btn">Sửa</button>
+    <button class="btn" @click.prevent="onClickBtnEdit">Sửa</button>
     <div class="dropdown">
       <div class="dropdown-btn" @click.prevent="toggleDropdown">
         <button class="btn icon icon-chevron-down-blue"></button>
@@ -41,6 +41,14 @@ export default {
       if (!this.$el.contains(e.target)) {
         this.isShow = false;
       }
+    },
+
+    /**
+     * click button edit.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    onClickBtnEdit() {
+      this.$emit("onClickBtnEdit");
     },
   },
 

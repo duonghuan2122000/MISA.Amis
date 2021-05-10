@@ -1,4 +1,6 @@
 ﻿using MISA.Core.Enums;
+using MISA.Core.Properties;
+using MISA.Core.Validations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,11 +21,13 @@ namespace MISA.Core.Entities
         /// <summary>
         /// Mã nhân viên
         /// </summary>
+        [PropertyRequired(ErrorResourceType = typeof(EmployeeResource))]
         public string EmployeeCode { get; set; }
 
         /// <summary>
         /// Tên nhân viên
         /// </summary>
+        [PropertyRequired(ErrorResourceType = typeof(EmployeeResource))]
         public string EmployeeName { get; set; }
 
         /// <summary>
@@ -39,7 +43,8 @@ namespace MISA.Core.Entities
         /// <summary>
         /// Id của đơn vị nhân viên.
         /// </summary>
-        public Guid EmployeeDepartmentId { get; set; }
+        [PropertyRequired(ErrorResourceType = typeof(EmployeeResource))]
+        public Guid? EmployeeDepartmentId { get; set; }
 
         /// <summary>
         /// Tên đơn vị nhân viên

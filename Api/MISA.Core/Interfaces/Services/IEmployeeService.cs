@@ -50,5 +50,12 @@ namespace MISA.Core.Interfaces.Services
         /// <returns>Số bản ghi ảnh hưởng</returns>
         /// CreatedBy: dbhuan (09/05/2021)
         public int Delete(Guid employeeId);
+
+        /// <summary>
+        /// Tạo mã nhân viên mới.
+        /// </summary>
+        /// <returns>Mã nhân viên</returns>
+        /// CreatedBy: dbhuan (10/05/2021)
+        public string GetNewEmployeeCode();
     }
 }

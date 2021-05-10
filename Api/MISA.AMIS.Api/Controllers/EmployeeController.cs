@@ -64,7 +64,7 @@ namespace MISA.AMIS.Api.Controllers
         public IActionResult GetEmployee(Guid employeeId)
         {
             var employee = _employeeService.GetEmployee(employeeId);
-            if(employee == null)
+            if (employee == null)
             {
                 return NoContent();
             }
@@ -86,7 +86,7 @@ namespace MISA.AMIS.Api.Controllers
         public IActionResult PostEmployee(Employee employee)
         {
             var res = _employeeService.Insert(employee);
-            if(res > 0)
+            if (res > 0)
             {
                 return StatusCode(201, res);
             }
@@ -108,7 +108,7 @@ namespace MISA.AMIS.Api.Controllers
         public IActionResult PutEmployee(Employee employee)
         {
             var res = _employeeService.Update(employee);
-            if(res > 0)
+            if (res > 0)
             {
                 return Ok(res);
             }
@@ -130,11 +130,17 @@ namespace MISA.AMIS.Api.Controllers
         public IActionResult DeleteEmployee(Guid employeeId)
         {
             var res = _employeeService.Delete(employeeId);
-            if(res > 0)
+            if (res > 0)
             {
                 return Ok(res);
             }
             return NoContent();
+        }
+
+        [HttpGet("NewEmployeeCode")]
+        public IActionResult GetNewEmployeeCode()
+        {
+            return Ok(_employeeService.GetNewEmployeeCode());
         }
     }
 }

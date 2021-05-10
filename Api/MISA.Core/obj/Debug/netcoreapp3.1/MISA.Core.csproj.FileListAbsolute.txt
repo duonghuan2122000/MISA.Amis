@@ -7,3 +7,16 @@ E:\Fresher MISA\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.Assemb
 E:\Fresher MISA\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.csproj.CoreCompileInputs.cache
 E:\Fresher MISA\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.dll
 E:\Fresher MISA\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.pdb
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\bin\Debug\netcoreapp3.1\MISA.Core.deps.json
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\bin\Debug\netcoreapp3.1\MISA.Core.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\bin\Debug\netcoreapp3.1\MISA.Core.pdb
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.csprojAssemblyReference.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.AssemblyInfoInputs.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.AssemblyInfo.cs
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.csproj.CoreCompileInputs.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.pdb
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.Properties.EmployeeResource.resources
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.Properties.Resources.resources
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.Properties.ValidationResource.resources
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Core\obj\Debug\netcoreapp3.1\MISA.Core.csproj.GenerateResource.cache

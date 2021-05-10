@@ -14,7 +14,7 @@ namespace MISA.Infrastructure.Repositories
     /// Kho chứa nhân viên
     /// </summary>
     /// CreatedBy: dbhuan (09/05/2021)
-    public class EmployeeRepository: IEmployeeRepository
+    public class EmployeeRepository : IEmployeeRepository
     {
         /// <summary>
         /// string config kết nối db.
@@ -50,7 +50,7 @@ namespace MISA.Infrastructure.Repositories
             // Tính tổng nhân viên.
             int? totalRecord = connection.QueryFirstOrDefault<int>("Proc_GetTotalEmployees", employeeFilter, commandType: CommandType.StoredProcedure);
 
-            if(totalRecord == null)
+            if (totalRecord == null)
             {
                 return res;
             }
@@ -139,6 +139,40 @@ namespace MISA.Infrastructure.Repositories
             var rowsAffect = connection.Execute("Proc_DeleteEmployee", p, commandType: CommandType.StoredProcedure);
 
             return rowsAffect;
+        }
+
+        /// <summary>
+        /// Tạo mã nhân viên mới.
+        /// </summary>
+        /// <returns>Mã nhân viên</returns>
+        /// CreatedBy: dbhuan (10/05/2021)
+        public string GetNewEmployeeCode()
+        {
+            // Thiết lập kết nối DB.
+            using var connection = new MySqlConnection(_connectionString);
+
+            // Lấy mã nhân viên lớn nhất trên db.
+            string? maxEmployeeCode = connection.QueryFirstOrDefault<string>("Proc_MaxEmployeeCode", commandType: CommandType.StoredProcedure);
+
+            if (maxEmployeeCode == null)
+            {
+                return "NV-0001";
+            }
+
+            string employeeCodeNumStr = string.Empty;
+
+            for (var i = 0; i < maxEmployeeCode.Length; i++)
+            {
+                if (char.IsDigit(maxEmployeeCode[i]))
+                {
+                    employeeCodeNumStr += maxEmployeeCode[i];
+                }
+            }
+
+            int employeeCodeNum = int.Parse(employeeCodeNumStr);
+            employeeCodeNum++;
+
+            return "NV-" + employeeCodeNum;
         }
     }
 }

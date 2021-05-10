@@ -33,3 +33,38 @@ E:\Fresher MISA\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.dll
 E:\Fresher MISA\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\ref\MISA.AMIS.Api.dll
 E:\Fresher MISA\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.pdb
 E:\Fresher MISA\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.genruntimeconfig.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\appsettings.json
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\MISA.AMIS.Api.exe
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\MISA.AMIS.Api.deps.json
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\MISA.AMIS.Api.runtimeconfig.json
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\MISA.AMIS.Api.runtimeconfig.dev.json
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\MISA.AMIS.Api.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\ref\MISA.AMIS.Api.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\MISA.AMIS.Api.pdb
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\Dapper.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\MySqlConnector.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\MISA.Core.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\MISA.Infrastructure.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\MISA.Core.pdb
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\MISA.Infrastructure.pdb
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.csprojAssemblyReference.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.AssemblyInfoInputs.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.AssemblyInfo.cs
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.csproj.CoreCompileInputs.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\staticwebassets\MISA.AMIS.Api.StaticWebAssets.Manifest.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\staticwebassets\MISA.AMIS.Api.StaticWebAssets.xml
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\scopedcss\bundle\MISA.AMIS.Api.styles.css
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.RazorTargetAssemblyInfo.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.csproj.CopyComplete
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\ref\MISA.AMIS.Api.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.pdb
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.AMIS.Api.genruntimeconfig.cache

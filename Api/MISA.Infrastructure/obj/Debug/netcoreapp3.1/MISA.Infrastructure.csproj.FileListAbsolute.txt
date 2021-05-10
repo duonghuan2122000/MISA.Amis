@@ -10,3 +10,15 @@ E:\Fresher MISA\MISA.Amis\Api\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.I
 E:\Fresher MISA\MISA.Amis\Api\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.csproj.CopyComplete
 E:\Fresher MISA\MISA.Amis\Api\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.dll
 E:\Fresher MISA\MISA.Amis\Api\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.pdb
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Infrastructure.deps.json
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Infrastructure.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Infrastructure.pdb
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Core.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\bin\Debug\netcoreapp3.1\MISA.Core.pdb
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.csprojAssemblyReference.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.AssemblyInfo.cs
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.csproj.CopyComplete
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.Infrastructure\obj\Debug\netcoreapp3.1\MISA.Infrastructure.pdb

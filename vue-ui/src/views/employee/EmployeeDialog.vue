@@ -27,11 +27,28 @@
           <div class="col-6" style="padding-right: 16px">
             <div class="row">
               <div class="col-5" style="padding-right: 8px">
-                <div>
+                <div class="con-input">
                   <label class="label-input"
                     >Mã <span style="color: #f20">*</span></label
                   >
-                  <input type="text" class="input" />
+                  <input
+                    type="text"
+                    class="input"
+                    :value="employee && employee.employeeCode"
+                    :class="{ 'has-error': errors && errors.employeeCode }"
+                    @input="
+                      $emit('update:employee', {
+                        ...employee,
+                        employeeCode: $event.target.value,
+                      })
+                    "
+                    @blur.prevent="validEmployeeCode"
+                  />
+                  <span
+                    v-if="errors && errors.employeeCode"
+                    class="text-error"
+                    >{{ errors && errors.employeeCode }}</span
+                  >
                 </div>
               </div>
               <div class="col-7">
@@ -39,8 +56,24 @@
                   <label class="label-input"
                     >Tên <span style="color: #f20">*</span></label
                   >
-                  <input type="text" class="input has-error" />
-                  <span class="text-error">Tên không được để trống.</span>
+                  <input
+                    type="text"
+                    class="input"
+                    :class="{ 'has-error': errors && errors.employeeName }"
+                    :value="employee && employee.employeeName"
+                    @input="
+                      $emit('update:employee', {
+                        ...employee,
+                        employeeName: $event.target.value,
+                      })
+                    "
+                    @blur.prevent="validEmployeeName"
+                  />
+                  <span
+                    v-if="errors && errors.employeeName"
+                    class="text-error"
+                    >{{ errors && errors.employeeName }}</span
+                  >
                 </div>
               </div>
             </div>
@@ -51,7 +84,21 @@
               <div class="col-5" style="padding-right: 16px">
                 <div>
                   <label class="label-input">Ngày sinh</label>
-                  <input type="date" class="input" />
+                  <input
+                    type="date"
+                    class="input"
+                    :value="
+                      employee && employee.dateOfBirth
+                        ? formatDateMMDDYYYY(employee.dateOfBirth)
+                        : null
+                    "
+                    @input="
+                      $emit('update:employee', {
+                        ...employee,
+                        dateOfBirth: $event.target.value,
+                      })
+                    "
+                  />
                 </div>
               </div>
               <div class="col-7">
@@ -62,7 +109,20 @@
                       class="flex-row-align-center"
                       style="margin-right: 16px"
                     >
-                      <input type="radio" id="male" class="radio" />
+                      <input
+                        type="radio"
+                        id="male"
+                        class="radio"
+                        name="gender"
+                        :value="0"
+                        :checked="employee && employee.gender == 0"
+                        @input="
+                          $emit('update:employee', {
+                            ...employee,
+                            gender: parseInt($event.target.value),
+                          })
+                        "
+                      />
                       <label for="male"></label>
                       <label style="margin-left: 8px">Nam</label>
                     </div>
@@ -70,7 +130,20 @@
                       class="flex-row-align-center"
                       style="margin-right: 16px"
                     >
-                      <input type="radio" id="female" class="radio" />
+                      <input
+                        type="radio"
+                        id="female"
+                        class="radio"
+                        name="gender"
+                        :value="1"
+                        :checked="employee && employee.gender == 1"
+                        @input="
+                          $emit('update:employee', {
+                            ...employee,
+                            gender: parseInt($event.target.value),
+                          })
+                        "
+                      />
                       <label for="female"></label>
                       <label style="margin-left: 8px">Nữ</label>
                     </div>
@@ -78,7 +151,20 @@
                       class="flex-row-align-center"
                       style="margin-right: 16px"
                     >
-                      <input type="radio" id="other" class="radio" />
+                      <input
+                        type="radio"
+                        id="other"
+                        class="radio"
+                        name="gender"
+                        :value="2"
+                        :checked="employee && employee.gender == 2"
+                        @input="
+                          $emit('update:employee', {
+                            ...employee,
+                            gender: parseInt($event.target.value),
+                          })
+                        "
+                      />
                       <label for="other"></label>
                       <label style="margin-left: 8px">Khác</label>
                     </div>
@@ -89,11 +175,28 @@
           </div>
 
           <div class="col-6" style="padding-right: 16px">
-            <div>
+            <div class="con-input">
               <label class="label-input"
                 >Đơn vị <span style="color: #f20">*</span></label
               >
-              <input type="text" class="input" />
+              <input
+                type="text"
+                class="input"
+                :class="{ 'has-error': errors && errors.employeeDepartmentId }"
+                :value="employee && employee.employeeDepartmentId"
+                @input="
+                  $emit('update:employee', {
+                    ...employee,
+                    employeeDepartmentId: $event.target.value,
+                  })
+                "
+                @blur.prevent="validEmployeeDepartmentId"
+              />
+              <span
+                v-if="errors && errors.employeeDepartmentId"
+                class="text-error"
+                >{{ errors && errors.employeeDepartmentId }}</span
+              >
             </div>
           </div>
 
@@ -102,14 +205,38 @@
               <div class="col-7" style="padding-right: 8px">
                 <div>
                   <label class="label-input">Số CMND</label>
-                  <input type="text" class="input" />
+                  <input
+                    type="text"
+                    class="input"
+                    :value="employee && employee.identityNumber"
+                    @input="
+                      $emit('update:employee', {
+                        ...employee,
+                        identityNumber: $event.target.value,
+                      })
+                    "
+                  />
                 </div>
               </div>
 
               <div class="col-5">
                 <div>
                   <label class="label-input">Ngày cấp</label>
-                  <input type="date" class="input" />
+                  <input
+                    type="date"
+                    class="input"
+                    :value="
+                      employee && employee.identityDate
+                        ? formatDateMMDDYYYY(employee.identityDate)
+                        : null
+                    "
+                    @input="
+                      $emit('update:employee', {
+                        ...employee,
+                        identityDate: $event.target.value,
+                      })
+                    "
+                  />
                 </div>
               </div>
             </div>
@@ -119,7 +246,17 @@
             <div>
               <div>
                 <label class="label-input">Chức danh</label>
-                <input type="text" class="input" />
+                <input
+                  type="text"
+                  class="input"
+                  :value="employee && employee.employeePosition"
+                  @input="
+                    $emit('update:employee', {
+                      ...employee,
+                      employeePosition: $event.target.value,
+                    })
+                  "
+                />
               </div>
             </div>
           </div>
@@ -127,32 +264,82 @@
           <div class="col-6" style="padding-left: 16px">
             <div>
               <label class="label-input">Nơi cấp</label>
-              <input type="text" class="input" />
+              <input
+                type="text"
+                class="input"
+                :value="employee && employee.identityPlace"
+                @input="
+                  $emit('update:employee', {
+                    ...employee,
+                    identityPlace: $event.target.value,
+                  })
+                "
+              />
             </div>
           </div>
 
           <div class="col-12" style="margin-top: 30px">
             <div>
               <label class="label-input">Địa chỉ</label>
-              <input type="text" class="input" />
+              <input
+                type="text"
+                class="input"
+                :value="employee && employee.employeeAddress"
+                @input="
+                  $emit('update:employee', {
+                    ...employee,
+                    employeeAddress: $event.target.value,
+                  })
+                "
+              />
             </div>
           </div>
           <div class="col-3" style="padding-right: 8px">
             <div>
               <label class="label-input">Điện thoại di động</label>
-              <input type="text" class="input" />
+              <input
+                type="text"
+                class="input"
+                :value="employee && employee.phoneNumber"
+                @input="
+                  $emit('update:employee', {
+                    ...employee,
+                    phoneNumber: $event.target.value,
+                  })
+                "
+              />
             </div>
           </div>
           <div class="col-3" style="padding-right: 8px">
             <div>
               <label class="label-input">Điện thoại cố định</label>
-              <input type="text" class="input" />
+              <input
+                type="text"
+                class="input"
+                :value="employee && employee.teleNumber"
+                @input="
+                  $emit('update:employee', {
+                    ...employee,
+                    teleNumber: $event.target.value,
+                  })
+                "
+              />
             </div>
           </div>
           <div class="col-3" style="padding-right: 8px">
             <div>
               <label class="label-input">Email</label>
-              <input type="text" class="input" />
+              <input
+                type="text"
+                class="input"
+                :value="employee && employee.email"
+                @input="
+                  $emit('update:employee', {
+                    ...employee,
+                    email: $event.target.value,
+                  })
+                "
+              />
             </div>
           </div>
           <div class="col-3" style="padding-right: 8px"></div>
@@ -180,11 +367,15 @@
 
       <div class="dialog-footer">
         <div class="dialog-footer-left">
-          <button class="btn btn-secondary" @click.prevent="closeDialog">Hủy</button>
+          <button class="btn btn-secondary" @click.prevent="closeDialog">
+            Hủy
+          </button>
         </div>
         <div class="dialog-footer-right">
           <button class="btn btn-secondary">Cất</button>
-          <button class="btn btn-primary">Cất và thêm</button>
+          <button class="btn btn-primary" style="margin-left: 8px">
+            Cất và thêm
+          </button>
         </div>
       </div>
     </div>
@@ -192,6 +383,7 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
 export default {
   props: {
     /**
@@ -202,11 +394,75 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    /**
+     * Prop thông tin nhân viên.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    employee: {
+      type: Object,
+      default: null,
+    },
   },
 
+  data: () => ({
+    errors: null,
+  }),
+
   methods: {
+    /**
+     * Phương thức đóng dialog
+     * CreatedBy: dbhuan (10/05/2021)
+     */
     closeDialog() {
       this.$emit("onClose");
+    },
+
+    /**
+     * Hàm format date về dạng MM/DD/YYYY
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    formatDateMMDDYYYY(dateStr) {
+      return dateStr ? dayjs(dateStr).format("MM/DD/YYYY") : null;
+    },
+
+    /**
+     * valid mã nhân viên
+     */
+    validEmployeeCode(e) {
+      let val = e.target.value;
+      if (!val) {
+        this.errors = {
+          ...this.errors,
+          employeeCode: "Mã nhân viên không được để trống.",
+        };
+      }
+    },
+
+    /**
+     * valid tên nhân viên
+     */
+    validEmployeeName(e) {
+      let val = e.target.value;
+      if (!val) {
+        this.errors = {
+          ...this.errors,
+          employeeName: "Tên nhân viên không được để trống.",
+        };
+      }
+    },
+
+    /**
+     * valid đơn vị nhân viên
+     */
+    validEmployeeDepartmentId(e) {
+      let val = e.target.value;
+      if (!val) {
+        this.errors = {
+          ...this.errors,
+          employeeDepartmentId: "Đơn vị nhân viên không được để trống.",
+        };
+      }
     },
   },
 };

@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div class="content">
+    <div class="content" v-if="isLoading">
+      <div class="loading">
+        <div class="loader"></div>
+      </div>
+    </div>
+
+    <div class="content" v-else-if="isSuccess">
       <div class="title-box">
         <div class="title">Nhân viên</div>
         <div class="toolbar">
@@ -29,55 +35,68 @@
         <div class="icon icon-excel" style="margin-left: 8px"></div>
       </div>
 
-      <div class="scroll">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>MÃ NHÂN VIÊN</th>
-              <th>TÊN NHÂN VIÊN</th>
-              <th>GIỚI TÍNH</th>
-              <th>NGÀY SINH</th>
-              <th>SỐ CMND</th>
-              <th>CHỨC DANH</th>
-              <th>TÊN ĐƠN VỊ</th>
-              <th>SỐ TÀI KHOẢN</th>
-              <th>TÊN NGÂN HÀNG</th>
-              <th>CHI NHÁNH TK NGÂN HÀNG</th>
-              <th>CHỨC NĂNG</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="e in employees" :key="e.employeeId">
-              <td>
-                <input type="checkbox" class="checkbox" :id="e.employeeCode" />
-                <label :for="e.employeeCode"></label>
-              </td>
-              <td>{{ e.employeeCode }}</td>
-              <td>{{ e.employeeName }}</td>
-              <td>{{ e.genderName }}</td>
-              <td>{{ formatDateDDMMYYY(e.dateOfBirth) }}</td>
-              <td>{{ e.identityNumber }}</td>
-              <td>{{ e.employeePosition }}</td>
-              <td>{{ e.employeeDepartmentName }}</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>
-                <EmployeeDropdown />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="data">
+        <div class="scroll">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>MÃ NHÂN VIÊN</th>
+                <th>TÊN NHÂN VIÊN</th>
+                <th>GIỚI TÍNH</th>
+                <th>NGÀY SINH</th>
+                <th>SỐ CMND</th>
+                <th>CHỨC DANH</th>
+                <th>TÊN ĐƠN VỊ</th>
+                <th>SỐ TÀI KHOẢN</th>
+                <th>TÊN NGÂN HÀNG</th>
+                <th>CHI NHÁNH TK NGÂN HÀNG</th>
+                <th>CHỨC NĂNG</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="e in employees" :key="e.employeeId">
+                <td>
+                  <input
+                    type="checkbox"
+                    class="checkbox"
+                    :id="e.employeeCode"
+                  />
+                  <label :for="e.employeeCode"></label>
+                </td>
+                <td>{{ e.employeeCode }}</td>
+                <td>{{ e.employeeName }}</td>
+                <td>{{ e.genderName }}</td>
+                <td>{{ formatDateDDMMYYY(e.dateOfBirth) }}</td>
+                <td>{{ e.identityNumber }}</td>
+                <td>{{ e.employeePosition }}</td>
+                <td>{{ e.employeeDepartmentName }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <EmployeeDropdown
+                    @onClickBtnEdit="onClickBtnEditEmployee(e.employeeId)"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="divider"></div>
+
+        <EmployeePagination
+          :page="page"
+          :totalPages="totalPages"
+          :totalRecord="totalRecord"
+        />
       </div>
-
-      <div class="divider"></div>
-
-      <EmployeePagination />
     </div>
 
     <EmployeeDialog
       :isShow="isShowEmployeeDialog"
+      :employee.sync="employeeModify"
       @onClose="setStateEmployeeDialog(false)"
     />
 
@@ -92,6 +111,8 @@
 import req from "../../utils/axios.js";
 import dayjs from "dayjs";
 
+import StateEnum from "../../enums/StateEnum.js";
+
 import EmployeePagination from "./EmployeePagination.vue";
 import EmployeeDropdown from "./EmployeeDropdown.vue";
 import EmployeeDialog from "./EmployeeDialog.vue";
@@ -104,6 +125,8 @@ export default {
     AlertDialog,
   },
   data: () => ({
+    state: StateEnum.LOADING,
+
     /**
      * trang hiện tại.
      * CreatedBy: dbhuan (09/05/2021)
@@ -114,7 +137,7 @@ export default {
      * Số bản ghi trên một trang
      * CreatedBy: dbhuan (09/05/2021)
      */
-    pageSize: 10,
+    pageSize: 20,
 
     /**
      * Bộ lọc filter nhân viên
@@ -123,10 +146,28 @@ export default {
     filter: "",
 
     /**
+     * Tổng số trang.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    totalPages: 0,
+
+    /**
+     * Tổng số bản ghi
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    totalRecord: 0,
+
+    /**
      * Danh sách nhân viên
      * CreatedBy: dbhuan (09/05/2021)
      */
     employees: [],
+
+    /**
+     * Thông tin nhân viên cần thêm hoặc sửa.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    employeeModify: null,
 
     /**
      * Biến xác định trạng thái employee dialog.
@@ -142,14 +183,42 @@ export default {
 
     timeOut: null,
   }),
+
+  computed: {
+    isLoading: function () {
+      return this.state == StateEnum.LOADING;
+    },
+    isSuccess: function () {
+      return this.state == StateEnum.SUCCESS;
+    },
+  },
+
   methods: {
+    /**
+     * Phương thức khởi tạo giá trị.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    initialData() {
+      if (this.$route.query && this.$route.query.page) {
+        this.page = parseInt(this.$route.query.page);
+      }
+    },
+
+    /**
+     * Lấy dữ liệu từ api.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
     fetchEmployees() {
+      this.state = StateEnum.LOADING;
       req(
         `api/v1/employees?page=${this.page}&pageSize=${this.pageSize}&filter=${this.filter}`
       )
         .then((res) => res.data)
         .then((data) => {
           this.employees = data.data;
+          this.totalPages = data.totalPages;
+          this.totalRecord = data.totalRecord;
+          this.state = StateEnum.SUCCESS;
         });
     },
 
@@ -189,8 +258,13 @@ export default {
      * Phương thức click button sửa nhân viên.
      * CreatedBy: dbhuan (09/05/2021)
      */
-    onClickBtnEditEmployee() {
+    onClickBtnEditEmployee(employeeId) {
       this.setStateEmployeeDialog(true);
+      req(`api/v1/employees/${employeeId}`)
+        .then((res) => res.data)
+        .then((data) => {
+          this.employeeModify = data;
+        });
     },
 
     /**
@@ -207,7 +281,15 @@ export default {
     },
   },
 
+  watch: {
+    "$route.query.page": function () {
+      this.initialData();
+      this.fetchEmployees();
+    },
+  },
+
   mounted() {
+    this.initialData();
     this.fetchEmployees();
   },
 };
