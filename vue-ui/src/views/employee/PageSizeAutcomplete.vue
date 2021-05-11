@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown autocomplete" @blur="isShow = false">
+  <div class="dropdown autocomplete">
     <div class="dropdown-btn con-input">
       <input
         type="text"
@@ -7,13 +7,14 @@
         readonly
         :value="suggestions[current].text"
         @focus="showSuggestion"
+        @blur="onBlur"
         @keydown.up="up"
         @keydown.down="down"
         @keydown.enter="enter"
       />
       <div
         class="icon-input icon-dropdown-box"
-        @click.prevent="toggleSuggestion"
+        @mousedown.prevent="toggleSuggestion"
       >
         <div class="icon icon-arrow-dropdown"></div>
       </div>
@@ -87,6 +88,12 @@ export default {
         this.isShow = false;
       }
     },
+
+    onBlur() {
+      setTimeout(() => {
+        this.isShow = false;
+      }, 500);
+    },
   },
 
   //   watch: {
@@ -111,6 +118,12 @@ export default {
   //   },
 
   mounted() {
+    let index = this.suggestions.findIndex((s) => s.value == this.value);
+    if (index >= 0) {
+      this.current = index;
+    } else {
+      this.current = 0;
+    }
     document.addEventListener("click", this.close);
   },
 
