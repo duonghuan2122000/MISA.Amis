@@ -343,6 +343,7 @@ body {
 
       .pager {
         .flex-row();
+        align-items: center;
 
         .page {
           padding-left: 8px;

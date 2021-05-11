@@ -71,3 +71,6 @@ C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\obj\Debug\net5.0\MISA.A
 E:\Fresher MISA\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\EPPlus.dll
 E:\Fresher MISA\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\Microsoft.IO.RecyclableMemoryStream.dll
 E:\Fresher MISA\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\System.Xml.XPath.XmlDocument.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\EPPlus.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\dbhuan\source\repos\MISA.Amis\Api\MISA.AMIS.Api\bin\Debug\net5.0\System.Xml.XPath.XmlDocument.dll

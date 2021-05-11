@@ -446,6 +446,9 @@ export default {
      * Phương thức click lưu thông tin nhân viên.
      */
     onClickSave() {
+      this.validEmployeeCode();
+      this.validEmployeeName();
+      this.validEmployeeDepartmentId();
       if (this.errors) {
         for (let err in this.errors) {
           if (this.errors[err]) {
@@ -461,6 +464,7 @@ export default {
      * CreatedBy: dbhuan (10/05/2021)
      */
     closeDialog() {
+      this.errors = null;
       this.$emit("onClose");
     },
 
@@ -475,9 +479,8 @@ export default {
     /**
      * valid mã nhân viên
      */
-    validEmployeeCode(e) {
-      let val = e.target.value;
-      if (!val) {
+    validEmployeeCode() {
+      if (!this.employee || !this.employee.employeeCode) {
         this.errors = {
           ...this.errors,
           employeeCode: "Mã nhân viên không được để trống.",
@@ -493,9 +496,8 @@ export default {
     /**
      * valid tên nhân viên
      */
-    validEmployeeName(e) {
-      let val = e.target.value;
-      if (!val) {
+    validEmployeeName() {
+      if (!this.employee || !this.employee.employeeName) {
         this.errors = {
           ...this.errors,
           employeeName: "Tên nhân viên không được để trống.",
@@ -511,9 +513,8 @@ export default {
     /**
      * valid đơn vị nhân viên
      */
-    validEmployeeDepartmentId(e) {
-      let val = e.target.value;
-      if (!val) {
+    validEmployeeDepartmentId() {
+      if (!this.employee || !this.employee.employeeDepartmentId) {
         this.errors = {
           ...this.errors,
           employeeDepartmentId: "Đơn vị nhân viên không được để trống.",

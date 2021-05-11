@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.AMIS.Api\\MISA.AMIS.Api.csproj": {}
+    "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.AMIS.Api\\MISA.AMIS.Api.csproj": {}
   },
   "projects": {
-    "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.AMIS.Api\\MISA.AMIS.Api.csproj": {
+    "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.AMIS.Api\\MISA.AMIS.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.AMIS.Api\\MISA.AMIS.Api.csproj",
+        "projectUniqueName": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.AMIS.Api\\MISA.AMIS.Api.csproj",
         "projectName": "MISA.AMIS.Api",
-        "projectPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.AMIS.Api\\MISA.AMIS.Api.csproj",
-        "packagesPath": "C:\\Users\\duong\\.nuget\\packages\\",
-        "outputPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.AMIS.Api\\obj\\",
+        "projectPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.AMIS.Api\\MISA.AMIS.Api.csproj",
+        "packagesPath": "C:\\Users\\dbhuan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.AMIS.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\duong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dbhuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,11 +28,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj": {
-                "projectPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj"
+              "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj": {
+                "projectPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj"
               },
-              "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
-                "projectPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj"
+              "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj"
               }
             }
           }
@@ -74,21 +74,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj": {
+    "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj",
+        "projectUniqueName": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj",
         "projectName": "MISA.Core",
-        "projectPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj",
-        "packagesPath": "C:\\Users\\duong\\.nuget\\packages\\",
-        "outputPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Core\\obj\\",
+        "projectPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj",
+        "packagesPath": "C:\\Users\\dbhuan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\duong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dbhuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -128,21 +128,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
+    "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
         "projectName": "MISA.Infrastructure",
-        "projectPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\duong\\.nuget\\packages\\",
-        "outputPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Infrastructure\\MISA.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\dbhuan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\duong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dbhuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -156,8 +156,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj": {
-                "projectPath": "E:\\Fresher MISA\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj"
+              "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj": {
+                "projectPath": "C:\\Users\\dbhuan\\source\\repos\\MISA.Amis\\Api\\MISA.Core\\MISA.Core.csproj"
               }
             }
           }
@@ -200,7 +200,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

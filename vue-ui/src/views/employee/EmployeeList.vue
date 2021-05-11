@@ -104,7 +104,9 @@
           :page="page"
           :totalPages="totalPages"
           :totalRecord="totalRecord"
+          :pageSize="pageSize"
           @onChangePage="onChangePage"
+          @onChangePageSize="onChangePageSize"
         />
       </div>
     </div>
@@ -321,6 +323,15 @@ export default {
      */
     onChangePage(page) {
       this.page = page;
+      this.fetchEmployees();
+    },
+
+    /**
+     * Sự kiện thay đổi số bản ghi trên trang.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    onChangePageSize(pageSize) {
+      this.pageSize = pageSize;
       this.fetchEmployees();
     },
 
