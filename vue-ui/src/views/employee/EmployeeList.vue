@@ -33,62 +33,69 @@
               :value="filter"
               @input="onChangeInputEmployeeFilter"
             />
-            <div
-              class="icon-input icon icon-search"
-              @click="onBtnClickRefresh"
-            ></div>
+            <div class="icon-input icon icon-search"></div>
           </div>
-          <div class="icon icon-refresh" style="margin-left: 8px"></div>
-          <div class="icon icon-excel" style="margin-left: 8px"></div>
+          <div
+            class="icon icon-refresh"
+            style="margin-left: 8px"
+            @click.prevent="onBtnClickRefresh"
+          ></div>
+          <div
+            class="icon icon-excel"
+            style="margin-left: 8px"
+            @click.prevent="onBtnClickExportExcel"
+          ></div>
         </div>
 
         <div class="data">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>MÃ NHÂN VIÊN</th>
-                <th>TÊN NHÂN VIÊN</th>
-                <th>GIỚI TÍNH</th>
-                <th>NGÀY SINH</th>
-                <th>SỐ CMND</th>
-                <th>CHỨC DANH</th>
-                <th>TÊN ĐƠN VỊ</th>
-                <th>SỐ TÀI KHOẢN</th>
-                <th>TÊN NGÂN HÀNG</th>
-                <th>CHI NHÁNH TK NGÂN HÀNG</th>
-                <th>CHỨC NĂNG</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="e in employees" :key="e.employeeId">
-                <td>
-                  <input
-                    type="checkbox"
-                    class="checkbox"
-                    :id="e.employeeCode"
-                  />
-                  <label :for="e.employeeCode"></label>
-                </td>
-                <td>{{ e.employeeCode }}</td>
-                <td>{{ e.employeeName }}</td>
-                <td>{{ e.genderName }}</td>
-                <td>{{ formatDateDDMMYYY(e.dateOfBirth) }}</td>
-                <td>{{ e.identityNumber }}</td>
-                <td>{{ e.employeePosition }}</td>
-                <td>{{ e.employeeDepartmentName }}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <EmployeeDropdown
-                    @onClickBtnEdit="onClickBtnEditEmployee(e.employeeId)"
-                    @onClickBtnDel="onClickBtnDelEmployee(e)"
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="scroll">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>MÃ NHÂN VIÊN</th>
+                  <th>TÊN NHÂN VIÊN</th>
+                  <th>GIỚI TÍNH</th>
+                  <th>NGÀY SINH</th>
+                  <th>SỐ CMND</th>
+                  <th>CHỨC DANH</th>
+                  <th>TÊN ĐƠN VỊ</th>
+                  <th>SỐ TÀI KHOẢN</th>
+                  <th>TÊN NGÂN HÀNG</th>
+                  <th>CHI NHÁNH TK NGÂN HÀNG</th>
+                  <th>CHỨC NĂNG</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="e in employees" :key="e.employeeId">
+                  <td>
+                    <input
+                      type="checkbox"
+                      class="checkbox"
+                      :id="e.employeeCode"
+                    />
+                    <label :for="e.employeeCode"></label>
+                  </td>
+                  <td>{{ e.employeeCode }}</td>
+                  <td>{{ e.employeeName }}</td>
+                  <td>{{ e.genderName }}</td>
+                  <td>{{ formatDateDDMMYYY(e.dateOfBirth) }}</td>
+                  <td>{{ e.identityNumber }}</td>
+                  <td>{{ e.employeePosition }}</td>
+                  <td>{{ e.employeeDepartmentName }}</td>
+                  <td>{{ e.bankAccountNumber }}</td>
+                  <td>{{ e.bankName }}</td>
+                  <td>{{ e.bankBranchName }}</td>
+                  <td>
+                    <EmployeeDropdown
+                      @onClickBtnEdit="onClickBtnEditEmployee(e.employeeId)"
+                      @onClickBtnDel="onClickBtnDelEmployee(e)"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div class="divider"></div>
@@ -97,6 +104,7 @@
           :page="page"
           :totalPages="totalPages"
           :totalRecord="totalRecord"
+          @onChangePage="onChangePage"
         />
       </div>
     </div>
@@ -211,16 +219,6 @@ export default {
 
   methods: {
     /**
-     * Phương thức khởi tạo giá trị.
-     * CreatedBy: dbhuan (10/05/2021)
-     */
-    initialData() {
-      if (this.$route.query && this.$route.query.page) {
-        this.page = parseInt(this.$route.query.page);
-      }
-    },
-
-    /**
      * Lấy dữ liệu từ api.
      * CreatedBy: dbhuan (10/05/2021)
      */
@@ -262,10 +260,19 @@ export default {
      */
     onBtnClickRefresh() {
       this.filter = "";
-      this.$router.push({
-        name: "employee",
-        query: { ...this.$route.query, page: 1 },
-      });
+      this.page = 1;
+      this.fetchEmployees();
+    },
+
+    /**
+     * click button xuất excel.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    onBtnClickExportExcel() {
+      window.open(
+        `https://localhost:44319/api/v1/employees/Export?page=${this.page}&pageSize=${this.pageSize}&filter=${this.filter}`,
+        "_blank"
+      );
     },
 
     /**
@@ -306,6 +313,15 @@ export default {
             this.fetchEmployees();
           }
         });
+    },
+
+    /**
+     * Sự kiện thay đổi trang trong phân trang.
+     * CreatedBy: dbhuan (10/05/2021)
+     */
+    onChangePage(page) {
+      this.page = page;
+      this.fetchEmployees();
     },
 
     /**
@@ -366,15 +382,7 @@ export default {
     },
   },
 
-  watch: {
-    "$route.query.page": function () {
-      this.initialData();
-      this.fetchEmployees();
-    },
-  },
-
   mounted() {
-    this.initialData();
     this.fetchEmployees();
   },
 };

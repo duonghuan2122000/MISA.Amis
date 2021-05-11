@@ -303,8 +303,14 @@ body {
   .data {
     flex: 1;
     background-color: @color-white;
-    padding: 0 16px;
-    overflow: auto;
+    padding-bottom: 16px;
+    overflow: hidden;
+
+    .scroll {
+      padding: 0 16px;
+      height: 100%;
+      overflow: auto;
+    }
 
     .table-option {
       .flex-row();
@@ -322,7 +328,6 @@ body {
   .divider {
     height: 4px;
     background-color: #f4f5f6;
-    margin-top: 16px;
   }
 
   .pagination {
@@ -331,7 +336,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: @color-white;
-    bottom: 0;
+    padding: 16px;
 
     .pagination-right {
       .flex-row();

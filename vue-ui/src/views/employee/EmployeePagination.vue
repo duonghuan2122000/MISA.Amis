@@ -6,47 +6,51 @@
     <div class="pagination-right">
       <Autcomplete />
       <div class="pager">
-        <router-link
-          :to="{ name: 'employee', query: { page: page - 1 } }"
+        <div
           class="page"
           :class="{ disable: page == 1 }"
-          >Trước</router-link
+          @click.prevent="$emit('onChangePage', page - 1)"
         >
+          Trước
+        </div>
 
-        <router-link
-          :to="{ name: 'employee', query: { page: 1 } }"
+        <div
           class="page"
           :class="{ active: page == 1 }"
-          >1</router-link
+          @click.prevent="$emit('onChangePage', 1)"
         >
+          1
+        </div>
 
         <div v-if="page > 3" class="page disable">...</div>
 
-        <router-link
-          :to="{ name: 'employee', query: { page: p } }"
+        <div
           v-for="p in pages"
           :key="p"
           class="page"
           :class="{ active: page == p }"
-          >{{ p }}</router-link
+          @click.prevent="$emit('onChangePage', p)"
         >
+          {{ p }}
+        </div>
 
         <div v-if="page < totalPages - 3" class="page disable">...</div>
 
-        <router-link
-          :to="{ name: 'employee', query: { page: totalPages } }"
+        <div
           class="page"
           :class="{ active: page == totalPages }"
+          @click.prevent="$emit('onChangePage', totalPages)"
         >
           {{ totalPages }}
-        </router-link>
+        </div>
 
-        <router-link
-          :to="{ name: 'employee', query: { page: page + 1 } }"
+        <div
           class="page"
           :class="{ disable: page == totalPages }"
-          >Sau</router-link
+          @click.prevent="$emit('onChangePage', page + 1)"
         >
+          Sau
+        </div>
       </div>
     </div>
   </div>
