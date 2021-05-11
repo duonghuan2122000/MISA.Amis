@@ -1,33 +1,46 @@
 <template>
-  <div class="autocomplete">
-    <!-- <input type="text" />
-    <ul class="autocomplete-results">
-      <li>Huan</li>
-      <li>Huan</li>
-      <li>Huan</li>
-      <li>Huan</li>
-    </ul> -->
+  <div class="dropdown autocomplete">
+    <div class="dropdown-btn">
+      <input type="text" />
+    </div>
+    <div class="dropdown-content">
+      <div
+        v-for="(suggestion, i) in suggestions"
+        :key="i"
+        class="dropdown-item"
+      >
+        {{ suggestion }}
+      </div>
+    </div>
   </div>
 </template>
 
-<style lang="less" scoped>
-.autocomplete {
-  position: relative;
-
-  input {
-      z-index: 5;
-  }
-
-  .autocomplete-results {
-    bottom: 0;
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    border: 1px solid #ccc;
-    height: 120px;
-    overflow: auto;
-    width: 100%;
-    z-index: 1;
-  }
-}
-</style>
+<script>
+export default {
+  props: {
+    suggestions: {
+      type: Array,
+      required: true,
+    },
+    value: {
+      type: String,
+    },
+  },
+  data: () => ({
+    isShow: false,
+    current: 0,
+  }),
+  methods: {
+    enter() {
+      this.$emit("update:value", this.suggestions[this.current]);
+      this.isShow = false;
+    },
+    up(){
+      if(this.current > 0) this.current--;
+    },
+    down(){
+      if(this.current < this.suggestions.length - 1) this.current++;
+    }
+  },
+};
+</script>

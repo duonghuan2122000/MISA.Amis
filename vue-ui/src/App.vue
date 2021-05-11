@@ -165,6 +165,10 @@ body {
   &.icon-error {
     .icon-bind(-746px -456px, 48px);
   }
+
+  &.icon-arrow-dropdown {
+    .icon-bind(-560px -359px, 16px);
+  }
 }
 
 // Navbar
@@ -693,6 +697,12 @@ body {
     border: 1px solid #ccc;
     white-space: nowrap;
     z-index: 20;
+    min-width: 100%;
+
+    &.reserve {
+      top: auto;
+      bottom: 100%;
+    }
 
     &.hide {
       display: none;
@@ -714,6 +724,31 @@ body {
         cursor: pointer;
       }
     }
+  }
+}
+
+// autocomplete
+.autocomplete {
+  .icon-dropdown-box {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    top: 1px;
+    right: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: #f4f5f6;
+      border-left: none;
+      border-radius: 4px;
+    }
+  }
+
+  .active {
+    background-color: #2ca01c;
+    color: @color-white;
   }
 }
 

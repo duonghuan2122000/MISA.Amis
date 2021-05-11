@@ -4,7 +4,7 @@
       Tổng số: <b>{{ totalRecord }}</b> bản ghi
     </div>
     <div class="pagination-right">
-      <select
+      <!-- <select
         class="input"
         :value="pageSize"
         @change="$emit('onChangePageSize', $event.target.value)"
@@ -14,7 +14,18 @@
         <option value="30">30 bản ghi trên trang</option>
         <option value="50">50 bản ghi trên trang</option>
         <option value="100">100 bản ghi trên trang</option>
-      </select>
+      </select> -->
+      <PageSizeAutocomplete
+        :value="pageSize"
+        :suggestions="[
+          { value: 10, text: '10 bản ghi trên trang' },
+          { value: 20, text: '20 bản ghi trên trang' },
+          { value: 30, text: '30 bản ghi trên trang' },
+          { value: 50, text: '50 bản ghi trên trang' },
+          { value: 100, text: '100 bản ghi trên trang' },
+        ]"
+        @update:value="$emit('update:pageSize', $event)"
+      />
       <div class="pager">
         <div
           class="page"
@@ -67,7 +78,11 @@
 </template>
 
 <script>
+import PageSizeAutocomplete from "./PageSizeAutcomplete.vue";
 export default {
+  components: {
+    PageSizeAutocomplete,
+  },
   props: {
     /**
      * Prop tổng số trang.

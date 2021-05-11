@@ -5,7 +5,10 @@
       <div class="dropdown-btn" @click.prevent="toggleDropdown">
         <button class="btn icon icon-chevron-down-blue"></button>
       </div>
-      <div class="dropdown-content right" :class="{ hide: !isShow }">
+      <div
+        class="dropdown-content right"
+        :class="{ hide: !isShow, reserve: reserve }"
+      >
         <div class="dropdown-item">Nhân bản</div>
         <div class="dropdown-item" @click.prevent="onClickBtnDel">Xóa</div>
         <div class="dropdown-item">Ngưng sử dụng</div>
@@ -22,6 +25,12 @@ export default {
      * CreatedBy: dbhuan (09/05/2021)
      */
     isShow: false,
+
+    /**
+     * Đảo ngược dropdown content.
+     * CreatedBy: dbhuan (11/05/2021)
+     */
+    reserve: false,
   }),
 
   methods: {
@@ -31,6 +40,9 @@ export default {
      */
     toggleDropdown() {
       this.isShow = !this.isShow;
+      if (this.isShow) {
+        this.reserveDropdown();
+      }
     },
 
     /**
@@ -40,6 +52,19 @@ export default {
     close(e) {
       if (!this.$el.contains(e.target)) {
         this.isShow = false;
+      }
+    },
+
+    reserveDropdown() {
+      let scrollTop = document.querySelector(".data .scroll").scrollTop;
+      let topOffset = this.$el.querySelector(".dropdown").offsetTop;
+      let relativeOffset = topOffset - scrollTop;
+      let windowHeight = window.innerHeight;
+
+      if (relativeOffset > windowHeight / 2) {
+        this.reserve = true;
+      } else {
+        this.reserve = false;
       }
     },
 
@@ -63,9 +88,11 @@ export default {
 
   mounted() {
     document.addEventListener("click", this.close);
+    document.querySelector('.data .scroll').addEventListener("scroll", this.reserveDropdown);
   },
   beforeDestroy() {
     document.removeEventListener("click", this.close);
+    document.querySelector('.data .scroll').removeEventListener("scroll", this.reserveDropdown);
   },
 };
 </script>

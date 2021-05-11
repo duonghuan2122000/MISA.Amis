@@ -105,8 +105,8 @@
           :totalPages="totalPages"
           :totalRecord="totalRecord"
           :pageSize="pageSize"
+          @update:pageSize="onChangePageSize"
           @onChangePage="onChangePage"
-          @onChangePageSize="onChangePageSize"
         />
       </div>
     </div>
