@@ -259,6 +259,7 @@ export default {
       clearTimeout(this.timeOut);
       this.timeOut = setTimeout(() => {
         this.filter = val;
+        this.page = 1;
         this.fetchEmployees();
       }, 1000);
     },
