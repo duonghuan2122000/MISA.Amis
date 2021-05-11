@@ -179,11 +179,9 @@
               <label class="label-input"
                 >Đơn vị <span style="color: #f20">*</span></label
               >
-              <input
-                type="text"
+              <select
                 class="input"
                 :class="{ 'has-error': errors && errors.employeeDepartmentId }"
-                :value="employee && employee.employeeDepartmentId"
                 @input="
                   $emit('update:employee', {
                     ...employee,
@@ -191,7 +189,18 @@
                   })
                 "
                 @blur.prevent="validEmployeeDepartmentId"
-              />
+              >
+                <option value="" disabled>
+                  Vui lòng chọn đơn vị nhân viên
+                </option>
+                <option
+                  v-for="ed in employeeDepartments"
+                  :key="ed.employeeDepartmentId"
+                  :value="ed.employeeDepartmentId"
+                >
+                  {{ ed.employeeDepartmentName }}
+                </option>
+              </select>
               <span
                 v-if="errors && errors.employeeDepartmentId"
                 class="text-error"
@@ -433,6 +442,15 @@ export default {
      */
     employee: {
       type: Object,
+      default: null,
+    },
+
+    /**
+     * Prop danh sách đơn vị nhân viên.
+     * CreatedBy: dbhuan (11/05/2021)
+     */
+    employeeDepartments: {
+      type: Array,
       default: null,
     },
   },

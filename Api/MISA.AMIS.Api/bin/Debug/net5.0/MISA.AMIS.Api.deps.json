@@ -1043,6 +1043,9 @@
         }
       },
       "MISA.Core/1.0.0": {
+        "dependencies": {
+          "EPPlus": "5.6.3"
+        },
         "runtime": {
           "MISA.Core.dll": {}
         },

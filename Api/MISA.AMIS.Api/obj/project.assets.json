@@ -1285,6 +1285,9 @@
       "MISA.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "EPPlus": "5.6.3"
+        },
         "compile": {
           "bin/placeholder/MISA.Core.dll": {}
         },

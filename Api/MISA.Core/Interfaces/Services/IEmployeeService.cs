@@ -1,6 +1,7 @@
 ﻿using MISA.Core.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace MISA.Core.Interfaces.Services
@@ -57,5 +58,13 @@ namespace MISA.Core.Interfaces.Services
         /// <returns>Mã nhân viên</returns>
         /// CreatedBy: dbhuan (10/05/2021)
         public string GetNewEmployeeCode();
+
+        /// <summary>
+        /// Export file excel danh sách nhân viên có bộ lọc
+        /// </summary>
+        /// <param name="employeeFilter">Bộ lọc</param>
+        /// <returns>Stream</returns>
+        /// CreatedBy: dbhuan (11/05/2021)
+        public Stream ExportExcel(EmployeeFilter employeeFilter);
     }
 }

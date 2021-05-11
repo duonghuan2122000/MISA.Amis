@@ -41,6 +41,8 @@ namespace MISA.AMIS.Api
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IEmployeeDepartmentRepository, EmployeeDepartmentRepository>();
+            services.AddScoped<IEmployeeDepartmentService, EmployeeDepartmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

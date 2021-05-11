@@ -114,6 +114,7 @@
     <EmployeeDialog
       :isShow="isShowEmployeeDialog"
       :employee.sync="employeeModify"
+      :employeeDepartments="employeeDepartments"
       @onClose="setStateEmployeeDialog(false)"
       @onPositive="saveEmployee"
     />
@@ -182,6 +183,12 @@ export default {
      * CreatedBy: dbhuan (09/05/2021)
      */
     employees: [],
+
+    /**
+     * Danh sách đơn vị nhân viên.
+     * CreatedBy: dbhuan (11/05/2021)
+     */
+    employeeDepartments: [],
 
     /**
      * Thông tin nhân viên cần thêm hoặc sửa.
@@ -354,6 +361,11 @@ export default {
           };
           this.setStateEmployeeDialog(true);
         });
+      req("api/v1/employee-department")
+        .then((res) => res.data)
+        .then((data) => {
+          this.employeeDepartments = data;
+        });
     },
 
     /**
@@ -367,6 +379,11 @@ export default {
         .then((res) => res.data)
         .then((data) => {
           this.employeeModify = data;
+        });
+      req("api/v1/employee-department")
+        .then((res) => res.data)
+        .then((data) => {
+          this.employeeDepartments = data;
         });
     },
 
