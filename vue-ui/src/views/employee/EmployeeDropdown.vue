@@ -88,11 +88,11 @@ export default {
 
   mounted() {
     document.addEventListener("click", this.close);
-    document.querySelector('.data .scroll').addEventListener("scroll", this.reserveDropdown);
+    // document.querySelector('.data .scroll').addEventListener("scroll", this.reserveDropdown);
   },
   beforeDestroy() {
     document.removeEventListener("click", this.close);
-    document.querySelector('.data .scroll').removeEventListener("scroll", this.reserveDropdown);
+    // document.querySelector('.data .scroll').removeEventListener("scroll", this.reserveDropdown);
   },
 };
 </script>

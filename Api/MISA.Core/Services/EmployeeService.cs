@@ -19,7 +19,7 @@ namespace MISA.Core.Services
     /// Dịch vụ nhân viên
     /// </summary>
     /// CreatedBy: dbhuan (09/05/2021)
-    public class EmployeeService: IEmployeeService
+    public class EmployeeService: BaseService<Employee>, IEmployeeService
     {
         /// <summary>
         /// kho chứa nhân viên
@@ -30,7 +30,7 @@ namespace MISA.Core.Services
         /// Hàm khởi tạo
         /// </summary>
         /// <param name="employeeRepository">kho chứa nhân viên</param>
-        public EmployeeService(IEmployeeRepository employeeRepository)
+        public EmployeeService(IEmployeeRepository employeeRepository): base(employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }
@@ -48,52 +48,6 @@ namespace MISA.Core.Services
                 throw new ClientException("Tham số truyền vào không hợp lệ");
             }
             return _employeeRepository.GetEmployees(employeeFilter);
-        }
-
-        /// <summary>
-        /// Lấy thông tin một nhân viên
-        /// </summary>
-        /// <param name="employeeId">Id nhân viên</param>
-        /// <returns>Thông tin một nhân viên</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public Employee GetEmployee(Guid employeeId)
-        {
-            return _employeeRepository.GetEmployee(employeeId);
-        }
-
-        /// <summary>
-        /// Insert thông tin một nhân viên vào DB.
-        /// </summary>
-        /// <param name="employee">Thông tin nhân viên</param>
-        /// <returns>Số bản ghi ảnh hưởng</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public int Insert(Employee employee)
-        {
-            Validate(employee);
-            return _employeeRepository.Insert(employee);
-        }
-
-        /// <summary>
-        /// Update thông tin một nhân viên.
-        /// </summary>
-        /// <param name="employee">Thông tin nhân viên</param>
-        /// <returns>Số bản ghi ảnh hưởng</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public int Update(Employee employee)
-        {
-            Validate(employee);
-            return _employeeRepository.Update(employee);
-        }
-
-        /// <summary>
-        /// Xóa một nhân viên
-        /// </summary>
-        /// <param name="employeeId">Id nhân viên</param>
-        /// <returns>Số bản ghi ảnh hưởng</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public int Delete(Guid employeeId)
-        {
-            return _employeeRepository.Delete(employeeId);
         }
 
         /// <summary>
@@ -188,46 +142,29 @@ namespace MISA.Core.Services
             return package.Stream;
         }
 
+
         /// <summary>
-        /// Valid dữ liệu
+        /// Phương thức dùng để cho valid của các trường hợp riêng biệt.
         /// </summary>
-        /// <param name="employee">Thông tin nhân viên</param>
-        /// CreatedBy: dbhuan (10/05/2021)
-        private void Validate(Employee employee)
+        /// <param name="t">Một thực thể</param>
+        /// <param name="isInsert">Xác định insert hoặc update</param>
+        /// CreatedBy: dbhuan (29/04/2021)
+        protected override void CustomValidate(Employee employee, bool isInsert = true)
         {
-            var properties = typeof(Employee).GetProperties();
-
-            foreach(var property in properties)
+            bool isExists;
+            if(isInsert == true)
             {
-                var requiredProperties = property.GetCustomAttributes(typeof(PropertyRequired), true);
+                isExists = _employeeRepository.CheckEmployeeCodeExists(employee.EmployeeCode);
+            } else
+            {
+                isExists = _employeeRepository.CheckEmployeeCodeExists(employee.EmployeeCode, employee.EmployeeId);
+            }
 
-                if(requiredProperties.Length > 0)
-                {
-                    var propertyValue = property.GetValue(employee);
-
-                    if(propertyValue == null || string.IsNullOrEmpty(property.ToString()))
-                    {
-                        var requiredProperty = requiredProperties[0] as PropertyRequired;
-
-                        var msgError = requiredProperty.MsgError;
-
-                        if (string.IsNullOrEmpty(msgError))
-                        {
-                            var msgErrorPropertyRequired = Properties.ValidationResource.MsgErrorPropertyRequired;
-
-                            var keyResource = string.IsNullOrEmpty(requiredProperty.ErrorResourceName) ? property.Name : requiredProperty.ErrorResourceName;
-
-                            var valueResource = new ResourceManager(requiredProperty.ErrorResourceType).GetString(keyResource);
-
-                            var name = string.IsNullOrEmpty(valueResource) ? property.Name : valueResource;
-
-                            msgError = string.Format(msgErrorPropertyRequired, name);
-                        }
-
-                        throw new ClientException(msgError);
-                    }
-                }
+            if(isExists == true)
+            {
+                throw new ClientException(Properties.ValidationResource.MsgErrorEmployeeCodeExists);
             }
         }
+
     }
 }

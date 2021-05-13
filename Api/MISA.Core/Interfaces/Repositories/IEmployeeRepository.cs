@@ -9,7 +9,7 @@ namespace MISA.Core.Interfaces.Repositories
     /// Interface kho chứa nhân viên
     /// </summary>
     /// CreatedBy: dbhuan (09/05/2021)
-    public interface IEmployeeRepository
+    public interface IEmployeeRepository: IBaseRepository<Employee>
     {
         /// <summary>
         /// Lấy danh sách nhân viên có lọc
@@ -20,42 +20,18 @@ namespace MISA.Core.Interfaces.Repositories
         public Paging<Employee> GetEmployees(EmployeeFilter employeeFilter);
 
         /// <summary>
-        /// Lấy thông tin một nhân viên
-        /// </summary>
-        /// <param name="employeeId">Id nhân viên</param>
-        /// <returns>Thông tin một nhân viên</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public Employee GetEmployee(Guid employeeId);
-
-        /// <summary>
-        /// Insert thông tin một nhân viên vào DB.
-        /// </summary>
-        /// <param name="employee">Thông tin nhân viên</param>
-        /// <returns>Số bản ghi ảnh hưởng</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public int Insert(Employee employee);
-
-        /// <summary>
-        /// Update thông tin một nhân viên.
-        /// </summary>
-        /// <param name="employee">Thông tin nhân viên</param>
-        /// <returns>Số bản ghi ảnh hưởng</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public int Update(Employee employee);
-
-        /// <summary>
-        /// Xóa một nhân viên
-        /// </summary>
-        /// <param name="employeeId">Id nhân viên</param>
-        /// <returns>Số bản ghi ảnh hưởng</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public int Delete(Guid employeeId);
-
-        /// <summary>
         /// Tạo mã nhân viên mới.
         /// </summary>
         /// <returns>Mã nhân viên</returns>
         /// CreatedBy: dbhuan (10/05/2021)
         public string GetNewEmployeeCode();
+
+        /// <summary>
+        /// Kiểm tra trùng mã nhân viên
+        /// </summary>
+        /// <param name="employeeCode">mã nhân viên</param>
+        /// <param name="employeeId">id nhân viên</param>
+        /// <returns></returns>
+        public bool CheckEmployeeCodeExists(string employeeCode, Guid? employeeId = null);
     }
 }

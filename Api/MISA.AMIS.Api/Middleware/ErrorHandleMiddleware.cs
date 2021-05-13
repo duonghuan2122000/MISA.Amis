@@ -62,7 +62,8 @@ namespace MISA.AMIS.Api.Middleware
             var res = new
             {
                 devMsg = ex.Message,
-                userMsg = "Có lỗi xảy ra"
+                userMsg = "Có lỗi xảy ra",
+                Data = ex.Data
             };
 
             var result = JsonSerializer.Serialize(res);

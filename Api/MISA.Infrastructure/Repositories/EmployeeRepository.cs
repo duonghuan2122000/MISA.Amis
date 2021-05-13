@@ -4,9 +4,7 @@ using MISA.Core.Entities;
 using MISA.Core.Interfaces.Repositories;
 using MySqlConnector;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace MISA.Infrastructure.Repositories
 {
@@ -14,7 +12,7 @@ namespace MISA.Infrastructure.Repositories
     /// Kho chứa nhân viên
     /// </summary>
     /// CreatedBy: dbhuan (09/05/2021)
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
         /// <summary>
         /// string config kết nối db.
@@ -25,9 +23,27 @@ namespace MISA.Infrastructure.Repositories
         /// Hàm khởi tạo.
         /// </summary>
         /// <param name="configuration">Config project</param>
-        public EmployeeRepository(IConfiguration configuration)
+        public EmployeeRepository(IConfiguration configuration) : base(configuration)
         {
             _connectionString = configuration.GetConnectionString("ConnectionDB");
+        }
+
+        /// <summary>
+        /// Kiểm tra trùng mã nhân viên
+        /// </summary>
+        /// <param name="employeeCode">mã nhân viên</param>
+        /// <param name="employeeId">id nhân viên</param>
+        /// <returns></returns>
+        /// CreatedBy: dbhuan (13/05/2021)
+        public bool CheckEmployeeCodeExists(string employeeCode, Guid? employeeId = null)
+        {
+            // Thiết lập kết nối DB.
+            using var connection = new MySqlConnection(_connectionString);
+
+            // kiểm tra trùng mã.
+            bool isExists = connection.QueryFirstOrDefault<bool>("Proc_CheckEmployeeCodeExists", new { employeeCode, employeeId }, commandType: CommandType.StoredProcedure);
+
+            return isExists;
         }
 
         /// <summary>
@@ -63,82 +79,6 @@ namespace MISA.Infrastructure.Repositories
             res.Data = employees;
 
             return res;
-        }
-
-        /// <summary>
-        /// Lấy thông tin một nhân viên
-        /// </summary>
-        /// <param name="employeeId">Id nhân viên</param>
-        /// <returns>Thông tin một nhân viên</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public Employee GetEmployee(Guid employeeId)
-        {
-            // Thiết lập kết nối DB.
-            using var connection = new MySqlConnection(_connectionString);
-
-            // Thiết lập param cho stored procedure.
-            var p = new DynamicParameters();
-            p.Add("employeeId", employeeId);
-
-            // Lấy thông tin nhân viên.
-            var employee = connection.QueryFirstOrDefault<Employee>("Proc_GetEmployee", p, commandType: CommandType.StoredProcedure);
-
-            return employee;
-        }
-
-        /// <summary>
-        /// Insert thông tin một nhân viên vào DB.
-        /// </summary>
-        /// <param name="employee">Thông tin nhân viên</param>
-        /// <returns>Số bản ghi ảnh hưởng</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public int Insert(Employee employee)
-        {
-            // Thiết lập kết nối DB.
-            using var connection = new MySqlConnection(_connectionString);
-
-            // insert vào db.
-            var rowsAffect = connection.Execute("Proc_InsertEmployee", employee, commandType: CommandType.StoredProcedure);
-
-            return rowsAffect;
-        }
-
-        /// <summary>
-        /// Update thông tin một nhân viên.
-        /// </summary>
-        /// <param name="employee">Thông tin nhân viên</param>
-        /// <returns>Số bản ghi ảnh hưởng</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public int Update(Employee employee)
-        {
-            // Thiết lập kết nối DB.
-            using var connection = new MySqlConnection(_connectionString);
-
-            // insert vào db.
-            var rowsAffect = connection.Execute("Proc_UpdateEmployee", employee, commandType: CommandType.StoredProcedure);
-
-            return rowsAffect;
-        }
-
-        /// <summary>
-        /// Xóa một nhân viên
-        /// </summary>
-        /// <param name="employeeId">Id nhân viên</param>
-        /// <returns>Số bản ghi ảnh hưởng</returns>
-        /// CreatedBy: dbhuan (09/05/2021)
-        public int Delete(Guid employeeId)
-        {
-            // Thiết lập kết nối DB.
-            using var connection = new MySqlConnection(_connectionString);
-
-            // Thiết lập param cho stored procedure.
-            var p = new DynamicParameters();
-            p.Add("employeeId", employeeId);
-
-            // Lấy thông tin nhân viên.
-            var rowsAffect = connection.Execute("Proc_DeleteEmployee", p, commandType: CommandType.StoredProcedure);
-
-            return rowsAffect;
         }
 
         /// <summary>

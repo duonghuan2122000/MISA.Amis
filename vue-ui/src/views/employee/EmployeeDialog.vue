@@ -34,6 +34,7 @@
                   <input
                     type="text"
                     class="input"
+                    ref="employeeCode"
                     :value="employee && employee.employeeCode"
                     :class="{ 'has-error': errors && errors.employeeCode }"
                     @input="
@@ -190,9 +191,7 @@
                 "
                 @blur.prevent="validEmployeeDepartmentId"
               >
-                <option value="" disabled>
-                  Vui lòng chọn đơn vị nhân viên
-                </option>
+                <option value=""></option>
                 <option
                   v-for="ed in employeeDepartments"
                   :key="ed.employeeDepartmentId"
@@ -425,6 +424,7 @@
 
 <script>
 import dayjs from "dayjs";
+
 export default {
   props: {
     /**
@@ -542,6 +542,15 @@ export default {
           ...this.errors,
           employeeDepartmentId: null,
         };
+      }
+    },
+  },
+  watch: {
+    isShow: function (val) {
+      if (val) {
+        this.$nextTick(function () {
+          this.$refs.employeeCode.focus();
+        });
       }
     },
   },

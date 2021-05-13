@@ -135,10 +135,10 @@ namespace MISA.Core.Entities
             {
                 return Gender switch
                 {
-                    GenderEnum.MALE => "Nam",
-                    GenderEnum.FEMALE => "Nữ",
-                    GenderEnum.OTHER => "Khác",
-                    _ => "Không xác định"
+                    GenderEnum.MALE => Properties.Resources.MALE,
+                    GenderEnum.FEMALE => Properties.Resources.FEMALE,
+                    GenderEnum.OTHER => Properties.Resources.OTHER,
+                    _ => Properties.Resources.UNKNOWN
                 };
             }
         }

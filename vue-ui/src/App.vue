@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Navbar from "./components/layout/Navbar.vue";
-import Header from "./components/layout/Header.vue";
-import Content from "./components/layout/Content.vue";
+import Navbar from "./components/layout/TheNavbar.vue";
+import Header from "./components/layout/TheHeader.vue";
+import Content from "./components/layout/TheContent.vue";
 export default {
   components: {
     Navbar,
@@ -308,12 +308,12 @@ body {
     flex: 1;
     background-color: @color-white;
     padding-bottom: 16px;
-    overflow: hidden;
+    overflow: auto;
 
     .scroll {
       padding: 0 16px;
       height: 100%;
-      overflow: auto;
+      // overflow: auto;
     }
 
     .table-option {
@@ -365,6 +365,7 @@ body {
 
           &.disable {
             cursor: not-allowed;
+            color: rgb(131, 131, 131);
           }
         }
       }

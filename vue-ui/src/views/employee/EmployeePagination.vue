@@ -4,17 +4,6 @@
       Tổng số: <b>{{ totalRecord }}</b> bản ghi
     </div>
     <div class="pagination-right">
-      <!-- <select
-        class="input"
-        :value="pageSize"
-        @change="$emit('onChangePageSize', $event.target.value)"
-      >
-        <option value="10">10 bản ghi trên trang</option>
-        <option value="20">20 bản ghi trên trang</option>
-        <option value="30">30 bản ghi trên trang</option>
-        <option value="50">50 bản ghi trên trang</option>
-        <option value="100">100 bản ghi trên trang</option>
-      </select> -->
       <PageSizeAutocomplete
         :value="pageSize"
         :suggestions="[
@@ -26,7 +15,7 @@
         ]"
         @update:value="$emit('update:pageSize', $event)"
       />
-      <div class="pager">
+      <div class="pager" v-if="totalPages > 1">
         <div
           class="page"
           :class="{ disable: page == 1 }"

@@ -61,11 +61,38 @@ namespace MISA.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} không được để trống .
+        ///   Looks up a localized string similar to Nữ.
         /// </summary>
-        internal static string MsgErrorPropertyRequired {
+        internal static string FEMALE {
             get {
-                return ResourceManager.GetString("MsgErrorPropertyRequired", resourceCulture);
+                return ResourceManager.GetString("FEMALE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nam.
+        /// </summary>
+        internal static string MALE {
+            get {
+                return ResourceManager.GetString("MALE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Khác.
+        /// </summary>
+        internal static string OTHER {
+            get {
+                return ResourceManager.GetString("OTHER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không xác định.
+        /// </summary>
+        internal static string UNKNOWN {
+            get {
+                return ResourceManager.GetString("UNKNOWN", resourceCulture);
             }
         }
     }

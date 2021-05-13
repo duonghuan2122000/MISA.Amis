@@ -67,7 +67,7 @@ namespace MISA.AMIS.Api.Controllers
         [HttpGet("{employeeId}")]
         public IActionResult GetEmployee(Guid employeeId)
         {
-            var employee = _employeeService.GetEmployee(employeeId);
+            var employee = _employeeService.Get(employeeId);
             if (employee == null)
             {
                 return NoContent();

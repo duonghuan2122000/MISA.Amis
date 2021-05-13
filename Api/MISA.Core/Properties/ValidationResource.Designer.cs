@@ -61,6 +61,15 @@ namespace MISA.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mã nhân viên đã tồn tại trên hệ thống.
+        /// </summary>
+        internal static string MsgErrorEmployeeCodeExists {
+            get {
+                return ResourceManager.GetString("MsgErrorEmployeeCodeExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} không được để trống.
         /// </summary>
         internal static string MsgErrorPropertyRequired {
