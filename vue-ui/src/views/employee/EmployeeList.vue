@@ -52,17 +52,17 @@
                   <input type="checkbox" class="checkbox" id="checkbox-all" />
                   <label for="checkbox-all"></label>
                 </th>
-                <th>MÃ NHÂN VIÊN</th>
-                <th>TÊN NHÂN VIÊN</th>
-                <th>GIỚI TÍNH</th>
-                <th>NGÀY SINH</th>
-                <th>SỐ CMND</th>
-                <th>CHỨC DANH</th>
-                <th>TÊN ĐƠN VỊ</th>
-                <th>SỐ TÀI KHOẢN</th>
-                <th>TÊN NGÂN HÀNG</th>
-                <th>CHI NHÁNH TK NGÂN HÀNG</th>
-                <th>CHỨC NĂNG</th>
+                <th style="min-width: 150px">MÃ NHÂN VIÊN</th>
+                <th style="min-width: 150px">TÊN NHÂN VIÊN</th>
+                <th style="min-width: 150px">GIỚI TÍNH</th>
+                <th style="min-width: 150px">NGÀY SINH</th>
+                <th style="min-width: 150px">SỐ CMND</th>
+                <th style="min-width: 150px">CHỨC DANH</th>
+                <th style="min-width: 150px">TÊN ĐƠN VỊ</th>
+                <th style="min-width: 150px">SỐ TÀI KHOẢN</th>
+                <th style="min-width: 150px">TÊN NGÂN HÀNG</th>
+                <th style="min-width: 150px">CHI NHÁNH TK NGÂN HÀNG</th>
+                <th style="min-width: 150px">CHỨC NĂNG</th>
               </tr>
             </thead>
             <tbody>

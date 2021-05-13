@@ -41,6 +41,7 @@ namespace MISA.AMIS.Api.Controllers
         /// 400 - Lỗi client
         /// 500 - Lỗi server
         /// </returns>
+        /// <response code="200">Có dữ liệu trả về</response>
         /// CreatedBy: dbhuan (09/05/2021)
         [HttpGet]
         public IActionResult GetEmployees([FromQuery] EmployeeFilter employeeFilter)

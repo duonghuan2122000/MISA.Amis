@@ -97,6 +97,8 @@ namespace MISA.Core.Services
 
             foreach (var property in properties)
             {
+                // TODO: Phân chia valid.
+
                 var requiredProperties = property.GetCustomAttributes(typeof(PropertyRequired), true);
 
                 // check required.

@@ -71,6 +71,7 @@ namespace MISA.Core.Services
             var res = _employeeRepository.GetEmployees(employeeFilter);
             var list = res.Data.ToList();
             var stream = new MemoryStream();
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using var package = new ExcelPackage(stream);
             var workSheet = package.Workbook.Worksheets.Add("DANH SÁCH NHÂN VIÊN");
 
